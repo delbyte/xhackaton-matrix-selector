@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  body {
+    @apply overflow-x-hidden;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .matrix-cell {
+    @apply transition-all duration-300;
+  }
+  
+  .header-cell {
+    @apply bg-gray-900/80 text-gray-300 backdrop-blur-sm;
+  }
+  
+  .selected-row,
+  .selected-col {
+    @apply bg-blue-900/70 text-blue-200 backdrop-blur-md;
+  }
+  
+  .in-selected-row,
+  .in-selected-col {
+    @apply bg-gray-700/80;
+  }
+  
+  .selected-cell {
+    @apply bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30;
+  }
+  
+  .highlight-cell {
+    @apply bg-blue-700/60;
+  }
+  
+  .intersection-highlight {
+    @apply bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg shadow-purple-500/50;
+  }
+}
+
+/* Custom styles for the matrix */
+.matrix-container {
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.2);
+}
+
+/* Animation for electric effect */
+@keyframes electric-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.8), 0 0 30px rgba(139, 92, 246, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+  }
+}
+
+.selected-cell {
+  animation: electric-pulse 2s infinite;
+}
